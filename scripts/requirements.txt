@@ -1,0 +1,17 @@
+attrdict
+blobfile
+einops
+fairseq
+gradio
+matplotlib
+mediapy
+numpy==1.23.0
+opencv-python
+packaging
+scikit-learn
+tensorboard
+tensorboardX
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
+tqdm

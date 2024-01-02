@@ -1,0 +1,4 @@
+torch>=2.0.0
+pytorch3d
+numpy
+torchvision

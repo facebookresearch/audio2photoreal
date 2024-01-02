@@ -1,0 +1,17 @@
+attrdict
+einops==0.7.0
+fairseq==0.12.2
+gradio==4.8.0
+gradio_client==0.7.1
+huggingface-hub==0.19.4
+hydra-core==1.0.7
+mediapy==1.2.0
+numpy==1.26.2
+omegaconf==2.0.6
+opencv-python==4.8.1.78
+protobuf==4.25.1
+tensorboardX==2.6.2.2
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
+tqdm==4.66.1
