@@ -69,7 +69,7 @@ You can change the number of samples (1-10) you want to generate, and download y
 # Installation
 The code has been tested with CUDA 11.7 and python 3.9, gcc/++ 9.0
 
-:point_down: If you haven't done so already via the demo setup, configure the environnments and download prerequisite models:
+:point_down: If you haven't done so already via the demo setup, configure the environments and download prerequisite models:
 ```
 conda create --name a2p_env python=3.9
 conda activate a2p_env
