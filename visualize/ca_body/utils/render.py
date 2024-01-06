@@ -36,26 +36,27 @@ class RenderLayer(nn.Module):
         assert output_filters is None
         assert background is None
 
+        device = verts.device  # Get device info
         B = verts.shape[0]
 
-        image_size = self.image_size[None].repeat(B, 1)
+        image_size = th.repeat_interleave(self.image_size[None], B, dim=0).to(device)
             
         cameras = cameras_from_opencv_projection(Rt[:,:,:3], Rt[:,:3,3], K, image_size)
 
-        faces = self.vi[None].repeat(B, 1, 1)
-        faces_uvs = self.vti[None].repeat(B, 1, 1)
-        verts_uvs = self.vt[None].repeat(B, 1, 1)        
+        faces = self.vi[None].repeat(B, 1, 1).to(device)
+        faces_uvs = self.vti[None].repeat(B, 1, 1).to(device)
+        verts_uvs = self.vt[None].repeat(B, 1, 1).to(device)        
         
-        # NOTE: this is confusing but correct
+        # In-place operation for flipping and permuting tensor
         if not self.flip_uvs:
-            tex = th.flip(tex.permute(0, 2, 3, 1), (1,))
+            tex = tex.permute(0, 2, 3, 1).flip((1,)).to(device)
 
         textures = TexturesUV(
             maps=tex,
             faces_uvs=faces_uvs,
             verts_uvs=verts_uvs,
         )    
-        meshes = Meshes(verts, faces, textures=textures)
+        meshes = Meshes(verts.to(device), faces, textures=textures)
         
         fragments = self.rasterizer(meshes, cameras=cameras)
         rgb = meshes.sample_textures(fragments)[:,:,:,0]    
