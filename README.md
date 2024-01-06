@@ -1,5 +1,5 @@
 # From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations
-This repositiory contains a pytorch implementation of ["From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations"](https://people.eecs.berkeley.edu/~evonne_ng/projects/audio2photoreal/)
+This repository contains a pytorch implementation of ["From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations"](https://people.eecs.berkeley.edu/~evonne_ng/projects/audio2photoreal/)
 
 https://github.com/facebookresearch/audio2photoreal/assets/17986358/5cba4079-275e-48b6-aecc-f84f3108c810
 
@@ -69,7 +69,7 @@ You can change the number of samples (1-10) you want to generate, and download y
 # Installation
 The code has been tested with CUDA 11.7 and python 3.9, gcc/++ 9.0
 
-:point_down: If you haven't done so already via the demo setup, configure the environnments and download prerequisite models:
+:point_down: If you haven't done so already via the demo setup, configure the environments and download prerequisite models:
 ```
 conda create --name a2p_env python=3.9
 conda activate a2p_env
@@ -163,7 +163,7 @@ python -m visualize.render_anno
     --max_seq_length <num>
 ```
 
-The videos will be chunked lengths according to specificed `--max_seq_length` arg, which you can specify (the default is 600).
+The videos will be chunked lengths according to specified `--max_seq_length` arg, which you can specify (the default is 600).
 
 :point_down: For example, to visualize ground truth annotations for `PXB184`, you can run the following.
 ```
@@ -198,7 +198,7 @@ There are 4 models for each person and each model has an associated `args.json`.
 4. a vq encoder-decoder model that vector quantizes the continuous 104-d pose space.
 
 # Running the pretrained models 
-To run the actual models, you will need to run the pretrained models and generate the associated results files before visualizing. 
+To run the actual models, you will need to run the pretrained models and generate the associated results files before visualizing them. 
 
 ### Face generation
 To generate the results file for the face, 
@@ -225,7 +225,7 @@ The other parameters are:
 ```
 python -m sample.generate --model_path checkpoints/diffusion/c1_face/model000155000.pt --num_samples 10 --num_repetitions 5 --timestep_respacing ddim500 --guidance_param 10.0
 ```
-This generates 10 samaples from the dataset 1 time. The output results file will be saved to:
+This generates 10 samples from the dataset 1 time. The output results file will be saved to:
 `./checkpoints/diffusion/c1_face/samples_c1_face_000155000_seed10_/results.npy`
 
 ### Body generation
