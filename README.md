@@ -163,7 +163,7 @@ python -m visualize.render_anno
     --max_seq_length <num>
 ```
 
-The videos will be chunked lengths according to specificed `--max_seq_length` arg, which you can specify (the default is 600).
+The videos will be chunked lengths according to specified `--max_seq_length` arg, which you can specify (the default is 600).
 
 :point_down: For example, to visualize ground truth annotations for `PXB184`, you can run the following.
 ```
