@@ -87,8 +87,9 @@ Please see [CA Bodies repo](https://github.com/facebookresearch/ca_body) for mor
 
 # Download data and models
 To download any of the datasets, you can find them at `https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip`, where you can replace `<person_id>` with any of `PXB184`, `RLW104`, `TXB805`, or `GQS883`.
+Download over the command line can be done with this commands.
 ```
-wget https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip
+curl -L https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip -o <person_id>.zip
 unzip <person_id>.zip -d dataset/
 rm <person_id>.zip
 ```
