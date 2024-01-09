@@ -195,10 +195,10 @@ We train person-specific models, so each person should have an associated direct
             |-- net_iter:06d.pth
 ```
 There are 4 models for each person and each model has an associated `args.json`.
-1. a face diffusion model that outputs 256 facial codes conditioned on audio
-2. a pose diffusion model that outputs 104 joint rotations conditioned on audio and guide poses
-3. a guide vq pose model that outputs vq tokens conditioned on audio at 1 fps
-4. a vq encoder-decoder model that vector quantizes the continuous 104-d pose space.
+1. A face diffusion model that outputs 256 facial codes conditioned on audio.
+2. A pose diffusion model that outputs 104 joint rotations conditioned on audio and guide poses.
+3. A guide vq pose model that outputs vq tokens conditioned on audio at 1 fps.
+4. A vq encoder-decoder model that vector quantizes the continuous 104-d pose space.
 
 # Running the pretrained models 
 To run the actual models, you will need to run the pretrained models and generate the associated results files before visualizing them. 
