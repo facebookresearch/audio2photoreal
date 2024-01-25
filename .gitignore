@@ -1,0 +1,4 @@
+*.pyc
+*.pt
+!dataset/*/data_stats.pth
+dataset

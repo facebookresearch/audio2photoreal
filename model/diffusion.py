@@ -279,17 +279,6 @@ class FiLMTransformer(nn.Module):
             param.requires_grad = False
         prGreen(f"adding lip conditioning {cp_path}")
 
-    def guided_forward(
-        self,
-        x: torch.Tensor,
-        cond_embed: torch.Tensor,
-        times: torch.Tensor,
-        guidance_weight: float,
-    ) -> torch.Tensor:
-        unc = self.forward(x, cond_embed, times, cond_drop_prob=1)
-        conditioned = self.forward(x, cond_embed, times, cond_drop_prob=0)
-        return unc + (conditioned - unc) * guidance_weight
-
     def parameters_w_grad(self):
         return [p for p in self.parameters() if p.requires_grad]
 
