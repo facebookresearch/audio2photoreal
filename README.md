@@ -1,5 +1,8 @@
 # From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations
-This repositiory contains a pytorch implementation of ["From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations"](https://people.eecs.berkeley.edu/~evonne_ng/projects/audio2photoreal/)
+This repository contains a pytorch implementation of ["From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations"](https://people.eecs.berkeley.edu/~evonne_ng/projects/audio2photoreal/)
+
+:hatching_chick: **Try out our demo [here](https://colab.research.google.com/drive/1lnX3d-3T3LaO3nlN6R8s6pPvVNAk5mdK?usp=sharing)** or continue following the steps below to run code locally!
+And thanks everyone for the support via contributions/comments/issues!
 
 https://github.com/facebookresearch/audio2photoreal/assets/17986358/5cba4079-275e-48b6-aecc-f84f3108c810
 
@@ -69,7 +72,7 @@ You can change the number of samples (1-10) you want to generate, and download y
 # Installation
 The code has been tested with CUDA 11.7 and python 3.9, gcc/++ 9.0
 
-:point_down: If you haven't done so already via the demo setup, configure the environnments and download prerequisite models:
+:point_down: If you haven't done so already via the demo setup, configure the environments and download prerequisite models:
 ```
 conda create --name a2p_env python=3.9
 conda activate a2p_env
@@ -84,8 +87,9 @@ Please see [CA Bodies repo](https://github.com/facebookresearch/ca_body) for mor
 
 # Download data and models
 To download any of the datasets, you can find them at `https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip`, where you can replace `<person_id>` with any of `PXB184`, `RLW104`, `TXB805`, or `GQS883`.
+Download over the command line can be done with this commands.
 ```
-wget https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip
+curl -L https://github.com/facebookresearch/audio2photoreal/releases/download/v1.0/<person_id>.zip -o <person_id>.zip
 unzip <person_id>.zip -d dataset/
 rm <person_id>.zip
 ```
@@ -135,7 +139,7 @@ Once the dataset is downloaded and unzipped (via `scripts/download_datasets.sh`)
 Each of the four participants (`PXB184`, `RLW104`, `TXB805`, `GQS883`) should have independent "scenes" (1 to 26 or so).
 For each scene, there are 3 types of data annotations that we save. 
 ```
-*audio.wav: wavefile contining the raw audio (two channels, 1600*T samples) at 48kHz; channel 0 is the audio associated with the current person, channel 1 is the audio associated with their conversational partner.
+*audio.wav: wavefile containing the raw audio (two channels, 1600*T samples) at 48kHz; channel 0 is the audio associated with the current person, channel 1 is the audio associated with their conversational partner.
 
 *body_pose.npy: (T x 104) array of joint angles in a kinematic skeleton. Not all of the joints are represented with 3DoF. Each 104-d vector can be used to reconstruct a full-body skeleton.
 
@@ -163,7 +167,7 @@ python -m visualize.render_anno
     --max_seq_length <num>
 ```
 
-The videos will be chunked lengths according to specificed `--max_seq_length` arg, which you can specify (the default is 600).
+The videos will be chunked lengths according to specified `--max_seq_length` arg, which you can specify (the default is 600).
 
 :point_down: For example, to visualize ground truth annotations for `PXB184`, you can run the following.
 ```
@@ -198,7 +202,7 @@ There are 4 models for each person and each model has an associated `args.json`.
 4. a vq encoder-decoder model that vector quantizes the continuous 104-d pose space.
 
 # Running the pretrained models 
-To run the actual models, you will need to run the pretrained models and generate the associated results files before visualizing. 
+To run the actual models, you will need to run the pretrained models and generate the associated results files before visualizing them. 
 
 ### Face generation
 To generate the results file for the face, 
@@ -225,7 +229,7 @@ The other parameters are:
 ```
 python -m sample.generate --model_path checkpoints/diffusion/c1_face/model000155000.pt --num_samples 10 --num_repetitions 5 --timestep_respacing ddim500 --guidance_param 10.0
 ```
-This generates 10 samaples from the dataset 1 time. The output results file will be saved to:
+This generates 10 samples from the dataset 1 time. The output results file will be saved to:
 `./checkpoints/diffusion/c1_face/samples_c1_face_000155000_seed10_/results.npy`
 
 ### Body generation

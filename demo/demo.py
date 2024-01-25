@@ -157,7 +157,11 @@ def generate_results(audio: np.ndarray, num_repetitions: int, top_p: float):
     if audio is None:
         raise gr.Error("Please record audio to start")
     sr, y = audio
-    # perform resampling
+    # set to mono and perform resampling
+    y = torch.Tensor(y)
+    if y.dim() == 2:
+        dim = 0 if y.shape[0] == 2 else 1
+        y = torch.mean(y, dim=dim)
     y = torchaudio.functional.resample(torch.Tensor(y), orig_freq=sr, new_freq=48_000)
     sr = 48_000
     # make it so that it is 4 seconds long
@@ -269,4 +273,4 @@ demo = gr.Interface(
 
 if __name__ == "__main__":
     fixseed(10)
-    demo.launch(show_api=False)
+    demo.launch(share=True)
