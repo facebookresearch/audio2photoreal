@@ -1,7 +1,7 @@
 attrdict
 einops==0.7.0
 fairseq==0.12.2
-gradio==4.11.0
+gradio==4.19.2
 gradio_client==0.7.3
 huggingface-hub==0.19.4
 hydra-core==1.0.7
