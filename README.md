@@ -15,10 +15,10 @@ This codebase provides:
 If you use the dataset or code, please cite our [Paper](https://arxiv.org/abs/2401.01885)
 
 ```
-@article{ng2024audio2photoreal,
+@inproceedings{ng2024audio2photoreal,
   title={From Audio to Photoreal Embodiment: Synthesizing Humans in Conversations},
   author={Ng, Evonne and Romero, Javier and Bagautdinov, Timur and Bai, Shaojie and Darrell, Trevor and Kanazawa, Angjoo and Richard, Alexander},
-  journal={arXiv preprint arXiv:2401.01885},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition},
   year={2024}
 }
 ```
